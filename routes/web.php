@@ -19,6 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'log_context'])->name('dashboard');
+    ->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

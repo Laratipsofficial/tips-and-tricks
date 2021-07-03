@@ -12,9 +12,6 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        Log::info('log data', ['fruit' => 'apple']);
-        Log::info('log data', ['fruit' => 'orange']);
-
         return view('dashboard');
     }
 }
