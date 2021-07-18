@@ -36,6 +36,14 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
+        $dirs = [
+            __DIR__.'/../Actions'
+        ];
+
+        foreach ($dirs as $dir) {
+            $this->load($dir);
+        }
+
         require base_path('routes/console.php');
     }
 }
