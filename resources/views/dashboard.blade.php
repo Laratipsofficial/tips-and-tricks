@@ -7,7 +7,11 @@
 
     <div class="py-12" id="shops">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            Dashboard Page
+            <div @class([
+                'p-4 random',
+                'bg-green-600' => $isActive,
+                'bg-gray-400' => $isDisabled,
+            ])>Dashboard Page</div>
         </div>
     </div>
 
