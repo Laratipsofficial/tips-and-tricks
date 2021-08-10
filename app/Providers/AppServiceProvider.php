@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('route', function ($expression) {
             return "<?php echo route($expression); ?>";
         });
+
+        config(['database.default' => Cache::get('db-connection', 'mysql')]);
     }
 }

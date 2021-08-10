@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'users' => User::take(5)->get(),
+        'dbConnection' => Cache::get('db-connection', 'mysql'),
+    ]);
 })->name('welcome');
+
+Route::get('change-db-connection', function () {
+    Cache::put('db-connection', request('connection', 'mysql'), now()->addYears(100));
+});
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])->name('dashboard');
