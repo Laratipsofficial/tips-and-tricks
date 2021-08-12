@@ -28,7 +28,5 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('route', function ($expression) {
             return "<?php echo route($expression); ?>";
         });
-
-        config(['database.default' => Cache::get('db-connection', 'mysql')]);
     }
 }

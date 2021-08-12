@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Models\Category;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rule;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +21,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome', [
-        'users' => User::take(5)->get(),
-        'dbConnection' => Cache::get('db-connection', 'mysql'),
+        'categories' => Category::whereNull('parent_id')->get(),
     ]);
 })->name('welcome');
 
-Route::get('change-db-connection', function () {
-    Cache::put('db-connection', request('connection', 'mysql'), now()->addYears(100));
-});
+Route::post('submit', function (Request $request) {
+    // dd(request()->all());
+    $request->validate([
+        'category_id' => Rule::exists(Category::class, 'id')->withoutTrashed(),
+    ]);
+    // save the article
+    dd($request->category_id);
+})->name('submit');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])->name('dashboard');

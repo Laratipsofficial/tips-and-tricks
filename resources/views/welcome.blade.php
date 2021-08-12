@@ -36,31 +36,30 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="space-y-2">
-                    <div class="text-xl">Connection: {{ $dbConnection }}</div>
+                <form action="{{ route('submit') }}" method="post">
+                    @csrf
+
                     <div>
-                        <x-button id="change-connection">
-                            Change Connection
-                        </x-button>
+                        <select name="category_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                            <option value="">Select Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')
+                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                        @enderror
                     </div>
-                    @foreach ($users as $user)
-                        <div class="bg-white px-8 py-6 shadow rounded">{{ $user->name }}</div>
-                    @endforeach
-                </div>
+    
+                    <div class="mt-4">
+                        <x-input name="title" placeholder="Article Title" class="w-full px-4 py-2 focus:outline-none" required />
+                    </div>
+    
+                    <div class="mt-4">
+                        <x-button>Submit</x-button>
+                    </div>
+                </form>
             </div>
         </div>
     </body>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        let currentConnection = "{{ $dbConnection }}";
-
-        document.querySelector('#change-connection').addEventListener('click', () => {
-            axios.get("/change-db-connection", {
-                params: {
-                    connection: (currentConnection === 'mysql' ? 'other' : 'mysql')
-                }
-            }).then(() => location.reload());
-        })
-    </script>
 </html>
