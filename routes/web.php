@@ -25,6 +25,28 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
+
+
+
+
+Route::get('/category/{category_id}', function ($categoryId) {
+    $category = Category::where('id', $categoryId)->firstOr(function () {
+        // log to somewhere
+        abort(403);
+    });
+
+    return $category;
+})->name('welcome');
+
+
+
+
+
+
+
+
+
+
 Route::post('submit', function (Request $request) {
     // dd(request()->all());
     $request->validate([
