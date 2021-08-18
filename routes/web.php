@@ -29,14 +29,9 @@ Route::get('/', function () {
 
 
 
-Route::get('/category/{category_id}', function ($categoryId) {
-    $category = Category::where('id', $categoryId)->firstOr(function () {
-        // log to somewhere
-        abort(403);
-    });
-
+Route::get('/category/{category}', function (Category $category) {
     return $category;
-})->name('welcome');
+})->name('welcome')->withTrashed();
 
 
 
