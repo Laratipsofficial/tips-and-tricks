@@ -13,6 +13,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <script src="//unpkg.com/alpinejs" defer></script>
+
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
@@ -36,14 +38,14 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <form action="{{ route('submit') }}" method="post">
+                <form action="{{ route('submit') }}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div>
                         <select name="category_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
                             <option value="">Select Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -52,7 +54,20 @@
                     </div>
     
                     <div class="mt-4">
-                        <x-input name="title" placeholder="Article Title" class="w-full px-4 py-2 focus:outline-none" required />
+                        <x-input name="title" placeholder="Article Title" class="w-full px-4 py-2 focus:outline-none" required value="{{ old('title') }}" />
+                    </div>
+
+                    <div class="mt-4" x-data="{hasImage: '{{ old('has_image') }}' === 'on'}">
+                        <label>
+                            <input type="checkbox" name="has_image" x-model="hasImage"> Has image
+                        </label>
+
+                        <div class="mt-2" x-show="hasImage">
+                            <input type="file" name="image">
+                            @error('image')
+                                <div class="text-red-500 text-xs">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
     
                     <div class="mt-4">

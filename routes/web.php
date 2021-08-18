@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Fluent;
 use Illuminate\Validation\Rule;
 
 /*
@@ -25,33 +26,27 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-
-
-
-
-Route::get('/category/{category}', function (Category $category) {
-    return $category;
-})->name('welcome')->withTrashed();
-
-
-
-
-
-
-
-
-
-
 Route::post('submit', function (Request $request) {
-    // dd(request()->all());
+
     $request->validate([
-        'category_id' => Rule::exists(Category::class, 'id')->withoutTrashed(),
+        'category_id' => ['required'],
+        'title' => ['required'],
+        'image' => [
+            'image',
+            Rule::when($request->has_image, ['required'])
+        ],
     ]);
+
     // save the article
-    dd($request->category_id);
+
+    dd($request->all());
 })->name('submit');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])->name('dashboard');
+
+Route::get('/category/{category}', function (Category $category) {
+    return $category;
+})->name('welcome')->withTrashed();
 
 require __DIR__.'/auth.php';
