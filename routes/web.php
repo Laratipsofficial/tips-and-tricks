@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -21,6 +22,13 @@ use Illuminate\Validation\Rule;
 */
 
 Route::get('/', function () {
+    /** @var Category */
+    $category = Category::find(1);
+
+    Image::query()
+        ->whereMorphedTo('imageable', $category)
+        ->get();
+
     return view('welcome', [
         'categories' => Category::whereNull('parent_id')->get(),
     ]);
