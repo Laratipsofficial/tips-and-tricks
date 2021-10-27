@@ -22,13 +22,6 @@ use Illuminate\Validation\Rule;
 */
 
 Route::get('/', function () {
-    /** @var Category */
-    $category = Category::find(1);
-
-    Image::query()
-        ->whereMorphedTo('imageable', $category)
-        ->get();
-
     return view('welcome', [
         'categories' => Category::whereNull('parent_id')->get(),
     ]);
