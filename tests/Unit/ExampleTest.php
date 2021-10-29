@@ -13,6 +13,11 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $this->assertTrue(true);
+        $data = collect([
+            'name' => 'Laratips',
+            'platform' => 'YouTube',
+        ]);
+
+        dd($data->has(['name', 'platform']));
     }
 }

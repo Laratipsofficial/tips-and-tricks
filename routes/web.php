@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Fluent;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
