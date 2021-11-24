@@ -51,6 +51,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 Route::get('/category/{category}', function (Category $category) {
     return $category;
-})->name('category')->withTrashed();
+})->name('category');
 
 require __DIR__.'/auth.php';
