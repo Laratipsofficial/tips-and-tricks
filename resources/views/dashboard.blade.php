@@ -7,8 +7,12 @@
 
     <div class="py-12" id="shops">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{ url('test') }}"
-                class="px-16 py-6 rounded bg-red-600 text-white">Test Route</a>
+            @foreach ($users as $user)
+                <div class="grid grid-cols-2 gap-6 px-4 p-2 {{ $loop->odd ? 'bg-white' : '' }}">
+                    <div>{{ $user->name }}</div>
+                    <div>{{ $user->latestLogin->logged_in_at }}</div>
+                </div>
+            @endforeach
         </div>
     </div>
 

@@ -46,4 +46,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class, 'user_id');
     }
+
+    public function logins()
+    {
+        return $this->hasMany(Login::class);
+    }
+
+    public function latestLogin()
+    {
+        return $this->hasOne(Login::class, 'user_id')
+            ->latestOfMany('logged_in_at');
+    }
 }
