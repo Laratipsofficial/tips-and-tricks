@@ -57,4 +57,14 @@ class User extends Authenticatable
         return $this->hasOne(Login::class, 'user_id')
             ->latestOfMany('logged_in_at');
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->type === 'admin';
+    }
+
+    public function isNormal(): bool
+    {
+        return $this->type === 'normal';
+    }
 }
