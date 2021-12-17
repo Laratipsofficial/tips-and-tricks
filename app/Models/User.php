@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use App\Mail\NewPasswordChangedNotificationMail;
+use Asdh\PasswordChangedNotification\Contracts\PasswordChangedNotificationContract;
+use Asdh\PasswordChangedNotification\Traits\PasswordChangedNotificationTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Mail\Mailable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements PasswordChangedNotificationContract
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, PasswordChangedNotificationTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -66,5 +70,10 @@ class User extends Authenticatable
     public function isNormal(): bool
     {
         return $this->type === 'normal';
+    }
+
+    public function passwordChangedNotificationMail(): Mailable
+    {
+        return new NewPasswordChangedNotificationMail;
     }
 }
