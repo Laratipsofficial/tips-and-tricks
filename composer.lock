@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "96cfe7601d3a248c1b6a4db2711f60aa",
+    "content-hash": "3bd9e9f8acd38dd1733eee358720a8a0",
     "packages": [
         {
             "name": "asdh/password-changed-notification",
-            "version": "dev-main",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Laratipsofficial/password-changed-notification.git",
+                "reference": "f29412f66ce666b9536b19c2c11d3c11e21a2f51"
+            },
             "dist": {
-                "type": "path",
-                "url": "/home/ashish/Documents/projects/packages/password-changed-notification",
-                "reference": "fc7cb02e2a88899d860f71cd3bb7ed663cd7b9e4"
+                "type": "zip",
+                "url": "https://api.github.com/repos/Laratipsofficial/password-changed-notification/zipball/f29412f66ce666b9536b19c2c11d3c11e21a2f51",
+                "reference": "f29412f66ce666b9536b19c2c11d3c11e21a2f51",
+                "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^8.73",
@@ -48,22 +54,7 @@
                     "Asdh\\PasswordChangedNotification\\Database\\Factories\\": "database/factories"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Asdh\\PasswordChangedNotification\\Tests\\": "tests"
-                }
-            },
-            "scripts": {
-                "analyse": [
-                    "vendor/bin/phpstan analyse"
-                ],
-                "test": [
-                    "vendor/bin/pest"
-                ],
-                "test-coverage": [
-                    "vendor/bin/pest coverage"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -77,13 +68,21 @@
             "description": "A simple package to send mail notification to the user when their password is changed.",
             "homepage": "https://github.com/asdh/password-changed-notification",
             "keywords": [
-                "Asdh",
+                "asdh",
                 "laravel",
                 "password-changed-notification"
             ],
-            "transport-options": {
-                "relative": false
-            }
+            "support": {
+                "issues": "https://github.com/Laratipsofficial/password-changed-notification/issues",
+                "source": "https://github.com/Laratipsofficial/password-changed-notification/tree/v1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Asdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-17T19:18:23+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -8693,9 +8692,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "asdh/password-changed-notification": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "asdh/password-changed-notification": "@dev",
+        "asdh/password-changed-notification": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -61,11 +61,5 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "/home/ashish/Documents/projects/packages/password-changed-notification"
-        }
-    ]
+    "prefer-stable": true
 }
