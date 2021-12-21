@@ -40,7 +40,7 @@ class MilesToKilometers extends Command
      */
     public function handle()
     {
-        $miles = ask(view('termwind.miles_to_km')->render());
+        $miles = render(view('termwind.miles_to_km')->render());
         $kilometers = $miles * 1.60934;
 
         render(view('termwind.miles_to_km_result', ['m' => $miles, 'km' => $kilometers])->render());

@@ -1,3 +1,19 @@
-<div>
-    <span class="text-green-500">{{ $m }}</span> miles = <span class="text-green-500">{{ $km }}</span> kilometers
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Laratips</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>YouTube</td>
+        </tr>
+    </tbody>
+</table>
