@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\TestingJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Log;
@@ -28,6 +29,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
             Log::info('Testing Laravel Scheduler.');
+            TestingJob::dispatch();
         })->everyMinute();
     }
 
