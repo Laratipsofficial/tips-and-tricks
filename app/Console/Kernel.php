@@ -27,10 +27,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->call(function () {
-            Log::info('Testing Laravel Scheduler.');
-            TestingJob::dispatch();
-        })->everyMinute();
+        // $schedule->call(function () {
+        //     Log::info('Testing Laravel Scheduler.');
+        //     TestingJob::dispatch();
+        // })->everyMinute();
     }
 
     /**
