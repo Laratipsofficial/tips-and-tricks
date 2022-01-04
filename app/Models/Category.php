@@ -39,4 +39,9 @@ class Category extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function isChild(): bool
+    {
+        return $this->parent_id !== null;
+    }
 }
