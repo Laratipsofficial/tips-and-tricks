@@ -26,9 +26,13 @@ use Illuminate\Support\Str;
 
 Route::get('/', function () {
     return view('welcome', [
-        'categories' => Category::whereNull('parent_id')->get(),
+        'categories' => Category::tree(),
     ]);
 })->name('welcome');
+
+Route::get('tree', function () {
+    return Category::tree();
+});
 
 Route::post('submit', function (Request $request) {
 
