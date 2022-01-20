@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserResourceCollection;
 use App\Models\Category;
@@ -23,6 +24,15 @@ use Illuminate\Support\Str;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::prefix('invoice')
+    ->controller(InvoiceController::class)
+    ->group(function () {
+        Route::get('generate', 'generate');
+        Route::get('download', 'download');
+        Route::get('send', 'send');
+    });
+
 
 Route::get('/', function () {
     return view('welcome', [
