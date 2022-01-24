@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Post;
 use App\Models\Video;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
@@ -39,5 +40,7 @@ class AppServiceProvider extends ServiceProvider
             'post' => Post::class,
             'video' => Video::class,
         ]);
+
+        Model::preventLazyLoading(! $this->app->isProduction());
     }
 }

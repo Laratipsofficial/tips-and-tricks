@@ -10,16 +10,8 @@ class HomeController extends Controller
 {
     public function __invoke(Request $request)
     {
-        dump(Cache::getStore());
-
-        if ($request->exists('addToCache')) {
-            Cache::put('user', User::first());
-        }
-
-        if ($request->exists('removeFromCache')) {
-            Cache::forget('user');
-        }
-
-        return view('welcome');
+        return view('welcome', [
+            'users' => User::with(['logins'])->get(),
+        ]);
     }
 }

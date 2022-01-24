@@ -40,11 +40,19 @@
             <div class="space-y-2">
                 {{-- <x-categories :categories="$categories" /> --}}
 
-                <div class="bg-white rounded shadow p-16">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, facilis odio quos impedit quasi nisi atque ab perferendis rerum, expedita quia temporibus accusantium totam distinctio laboriosam, illum aliquid. Corrupti, eum.
-                </div>
+                <div class="space-y-2">
+                    @foreach ($users as $user)
+                        <div class="bg-white rounded shadow p-2">
+                            {{ $user->name }}
 
-                @dump(optional(Cache::get('user'))->toArray())
+                            @foreach ($user->logins as $login)
+                                <div class="ml-4 text-gray-600 text-sm">
+                                    - {{ $login->logged_in_at->diffForHumans() }}
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </body>
