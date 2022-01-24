@@ -38,7 +38,13 @@
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="space-y-2">
-                <x-categories :categories="$categories" />
+                {{-- <x-categories :categories="$categories" /> --}}
+
+                <div class="bg-white rounded shadow p-16">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, facilis odio quos impedit quasi nisi atque ab perferendis rerum, expedita quia temporibus accusantium totam distinctio laboriosam, illum aliquid. Corrupti, eum.
+                </div>
+
+                @dump(optional(Cache::get('user'))->toArray())
             </div>
         </div>
     </body>

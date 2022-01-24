@@ -13,7 +13,8 @@
         "laravel/framework": "^8.40",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
-        "nunomaduro/termwind": "dev-master"
+        "nunomaduro/termwind": "dev-master",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserResourceCollection;
@@ -34,11 +35,7 @@ Route::prefix('invoice')
     });
 
 
-Route::get('/', function () {
-    return view('welcome', [
-        'categories' => Category::tree(),
-    ]);
-})->name('welcome');
+Route::get('/', HomeController::class)->name('welcome');
 
 Route::get('tree', function () {
     return Category::tree();
