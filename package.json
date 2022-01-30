@@ -21,6 +21,7 @@
         "tailwindcss": "^3.0.9"
     },
     "dependencies": {
+        "puppeteer": "^13.1.2",
         "push.js": "^1.0.12"
     }
 }

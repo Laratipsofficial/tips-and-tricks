@@ -11,10 +11,12 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
+        "laravel/horizon": "^5.8",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
         "nunomaduro/termwind": "dev-master",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "spatie/browsershot": "^3.52"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

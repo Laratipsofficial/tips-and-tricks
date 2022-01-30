@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GenerateHomePdfController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SaveUserController;
 use App\Http\Resources\UserResource;
@@ -36,7 +37,8 @@ Route::prefix('invoice')
     });
 
 
-Route::get('/', HomeController::class)->name('welcome');
+Route::get('/', HomeController::class)->name('home');
+Route::get('/generate-pdf', GenerateHomePdfController::class)->name('home.generate-pdf');
 Route::post('save-user', SaveUserController::class)->name('save-user');
 
 Route::get('tree', function () {

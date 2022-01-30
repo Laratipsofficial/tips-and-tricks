@@ -23,8 +23,6 @@ class SaveUserController extends Controller
                 'type' => 'normal type',
             ]);
 
-            // 'normal'
-
             Mail::to($user)->send(new SendWelcomeMessageMail($user));
     
             // throw new Exception("something went wrong.");
