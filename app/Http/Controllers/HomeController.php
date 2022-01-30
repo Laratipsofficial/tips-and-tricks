@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         return view('welcome', [
-            'users' => User::get(['name']),
+            'roles' => Role::get(['id', 'name']),
         ]);
     }
 }

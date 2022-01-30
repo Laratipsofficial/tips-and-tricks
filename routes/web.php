@@ -38,7 +38,6 @@ Route::prefix('invoice')
 
 
 Route::get('/', HomeController::class)->name('home');
-Route::get('/generate-pdf', GenerateHomePdfController::class)->name('home.generate-pdf');
 Route::post('save-user', SaveUserController::class)->name('save-user');
 
 Route::get('tree', function () {

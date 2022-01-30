@@ -21,7 +21,7 @@
             }
         </style>
     </head>
-    <body class="antialiased bg-gray-100 p-8 lg:p-0">
+    <body class="antialiased bg-gray-100">
         @if (Route::has('login'))
             <div class="px-6 py-4 flex items-center justify-end">
                 @auth
@@ -36,20 +36,42 @@
             </div>
         @endif
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 space-y-2">
-            @if(session('success'))
-                <x-alert :message="session('success')" />
-            @endif
+        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <x-card>
+                @if(session('success'))
+                    <x-alert :message="session('success')" />
+                @endif
 
-            <a href="{{ route('home.generate-pdf') }}" class="mb-2">
-                <x-button x-data="{disabled:false}" x-on:click="disabled=true" ::disabled="disabled">Generate Pdf</x-button>
-            </a>
+                <form action="{{ route('save-user') }}" method="POST" x-data="{btnDisabled: false}" x-on:submit="btnDisabled=true">
+                    @csrf
 
-            @foreach ($users as $user)
-                <x-card>
-                    {{ $user->name }}
-                </x-card>
-            @endforeach
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <x-label>Name</x-label>
+                            <x-input name="name" required />
+                        </div>
+
+                        <div>
+                            <x-label>Email</x-label>
+                            <x-input type="email" name="email" required />
+                        </div>
+
+                        <div>
+                            <x-label>Password</x-label>
+                            <x-input type="password" name="password" required />
+                        </div>
+
+                        <div>
+                            <x-label>Select Role</x-label>
+                            <x-select :items="$roles" name="role_id" required />
+                        </div>
+
+                        <div>
+                            <x-button ::disabled="btnDisabled">Save</x-button>
+                        </div>
+                    </div>
+                </form>
+            </x-card>
         </div>
     </body>
 </html>
