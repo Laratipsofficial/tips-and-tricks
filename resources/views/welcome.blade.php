@@ -37,23 +37,41 @@
         @endif
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div class="space-y-2">
-                {{-- <x-categories :categories="$categories" /> --}}
+            <x-card>
+                @if(session('success'))
+                    <x-alert :message="session('success')" />
+                @endif
 
-                <div class="space-y-2">
-                    @foreach ($users as $user)
-                        <div class="bg-white rounded shadow p-2">
-                            {{ $user->name }}
+                <form action="{{ route('save-user') }}" method="POST" x-data="{btnDisabled: false}" x-on:submit="btnDisabled=true">
+                    @csrf
 
-                            @foreach ($user->logins as $login)
-                                <div class="ml-4 text-gray-600 text-sm">
-                                    - {{ $login->logged_in_at->diffForHumans() }}
-                                </div>
-                            @endforeach
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <x-label>Name</x-label>
+                            <x-input name="name" required />
                         </div>
-                    @endforeach
-                </div>
-            </div>
+
+                        <div>
+                            <x-label>Email</x-label>
+                            <x-input type="email" name="email" required />
+                        </div>
+
+                        <div>
+                            <x-label>Password</x-label>
+                            <x-input type="password" name="password" required />
+                        </div>
+
+                        <div>
+                            <x-label>Select Role</x-label>
+                            <x-select :items="$roles" name="role_id" required />
+                        </div>
+
+                        <div>
+                            <x-button ::disabled="btnDisabled">Save</x-button>
+                        </div>
+                    </div>
+                </form>
+            </x-card>
         </div>
     </body>
 </html>

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Login;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,10 @@ class DatabaseSeeder extends Seeder
                     ->times(random_int(2, 4))
                     ->create(['user_id' => $user->id])
             );
+
+        Role::factory()
+            ->times(3)
+            ->create();
 
         Category::factory()
             ->times(2)

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\SaveUserController;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserResourceCollection;
 use App\Models\Category;
@@ -36,6 +37,7 @@ Route::prefix('invoice')
 
 
 Route::get('/', HomeController::class)->name('welcome');
+Route::post('save-user', SaveUserController::class)->name('save-user');
 
 Route::get('tree', function () {
     return Category::tree();
