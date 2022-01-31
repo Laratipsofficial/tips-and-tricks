@@ -20,7 +20,7 @@ class SaveUserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'type' => 'normal type',
+                'type' => 'normal',
             ]);
 
             Mail::to($user)->send(new SendWelcomeMessageMail($user));
