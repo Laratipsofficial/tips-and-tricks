@@ -13,13 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        <script src="//unpkg.com/alpinejs" defer></script>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
+        <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="antialiased bg-gray-100">
         @if (Route::has('login'))
@@ -40,7 +34,7 @@
             <x-card>
                 @if(session('success'))
                     <x-alert :message="session('success')" />
-                @endif
+                    @endif
 
                 <form action="{{ route('save-user') }}" method="POST" x-data="{btnDisabled: false}" x-on:submit="btnDisabled=true">
                     @csrf
