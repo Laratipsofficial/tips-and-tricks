@@ -18,6 +18,38 @@
                 </div>
             </div>
 
+            <div class="w-96 mt-3"
+                 x-data="dropdownMovies()"
+                 x-init="$watch('movie', () => selectedMovieIndex='')">
+                <div>
+                    <input type="text"
+                           class="rounded-md border border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full px-4 py-2"
+                           placeholder="Search"
+                           x-model="movie"
+                           x-on:click.outside="reset()"
+                           x-on:keyup.escape="reset()"
+                           x-on:keyup.down="selectNextMovie"
+                           x-on:keyup.up="selectPreviousMovie"
+                           x-on:keyup.enter="goToUrl()">
+
+                    <div class="shadow-lg rounded-md py-2 border mt-1 max-h-64 overflow-y-auto bg-white"
+                         x-show="filteredMovies.length>0"
+                         x-transition
+                         x-ref="movies">
+                        <template x-for="(movie, index) in filteredMovies">
+                            <button x-text="movie.name"
+                                    class="px-4 py-2 block w-full text-left"
+                                    :class="{ 'bg-gray-100 outline-none': index===selectedMovieIndex }"
+                                    x-on:click.prevent="goToUrl(movie)"></button>
+                        </template>
+                    </div>
+                    <div class="mt-1 px-4 py-2 block shadow-gray-50 rounded-md border bg-white"
+                         x-show="movie!=='' && filteredMovies.length===0">
+                        No Movies Available.
+                    </div>
+                </div>
+            </div>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -90,3 +122,75 @@
         </div>
     </div>
 </nav>
+
+@push('script')
+<script>
+    function dropdownMovies() {
+        return {
+            movie: "",
+            selectedMovieIndex: "",
+            movies: [
+                {id: 1, name: "Spider-Man: No Way Home"},
+                {id: 2, name: "Eternals"},
+                {id: 3, name: "Hotel Transylvania: Transformania"},
+                {id: 4, name: "Ghostbusters: Afterlife"},
+                {id: 5, name: "The Matrix Resurrections"},
+                {id: 6, name: "The Ice Age Adventures of Buck Wild"},
+                {id: 7, name: "Venom: Let There Be Carnage"},
+                {id: 8, name: "Red Notice"},
+                {id: 9, name: "Shang-Chi and the Legend of the Ten Rings"},
+            ],
+
+            get filteredMovies() {
+                if (this.movie === "") {
+                    return [];
+                }
+
+                return this.movies.filter(movie => movie.name.toLowerCase().includes(this.movie.toLowerCase()))
+            },
+
+            reset() {
+                this.movie = "";
+            },
+
+            selectNextMovie() {
+                if (this.selectedMovieIndex === "") {
+                    this.selectedMovieIndex = 0;
+                } else {
+                    this.selectedMovieIndex++;
+                }
+
+                if (this.selectedMovieIndex === this.filteredMovies.length) {
+                    this.selectedMovieIndex = 0;
+                }
+
+                this.focusSelectedMovie();
+            },
+
+            selectPreviousMovie() {
+                if (this.selectedMovieIndex === "") {
+                    this.selectedMovieIndex = this.filteredMovies.length - 1;
+                } else {
+                    this.selectedMovieIndex--;
+                }
+
+                if (this.selectedMovieIndex < 0) {
+                    this.selectedMovieIndex = this.filteredMovies.length - 1;
+                }
+
+                this.focusSelectedMovie();
+            },
+
+            focusSelectedMovie() {
+                this.$refs.movies.children[this.selectedMovieIndex + 1].scrollIntoView({ block: 'nearest' })
+            },
+
+            goToUrl(movie) {
+                let currentMovie = movie ? movie : this.filteredMovies[this.selectedMovieIndex];
+
+                window.location = `/dashboard?name=${currentMovie.name}`;
+            },
+        };
+    }
+</script>
+@endpush
