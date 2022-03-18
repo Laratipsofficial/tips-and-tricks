@@ -8,10 +8,7 @@
     <div class="py-12" id="shops">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @foreach ($users as $user)
-                <div class="grid grid-cols-2 gap-6 px-4 p-2 {{ $loop->odd ? 'bg-white' : '' }}">
-                    <div>{{ $user->name }}</div>
-                    <div>{{ $user->latestLogin->logged_in_at }}</div>
-                </div>
+                @include('dashboard.user')
             @endforeach
         </div>
     </div>

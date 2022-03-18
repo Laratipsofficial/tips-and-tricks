@@ -18,6 +18,6 @@ class DashboardController extends Controller
     {
         $data['users'] = User::with(['latestLogin'])->take(5)->get();
 
-        return view('dashboard', $data);
+        return view('dashboard.index', $data);
     }
 }
