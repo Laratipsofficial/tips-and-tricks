@@ -32,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        Model::unguard();
+
         Blade::directive('route', function ($expression) {
             return "<?php echo route($expression); ?>";
         });
