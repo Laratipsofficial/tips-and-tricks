@@ -44,5 +44,10 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         Model::preventLazyLoading(! $this->app->isProduction());
+
+        // Blade::anonymousComponentNamespace(
+        //     'admin/components',
+        //     'admin'
+        // );
     }
 }
