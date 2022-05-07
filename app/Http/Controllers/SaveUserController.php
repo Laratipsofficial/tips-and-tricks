@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveUserRequest;
 use App\Mail\RoleAssignedMail;
 use App\Mail\SendWelcomeMessageMail;
 use App\Models\User;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SaveUserController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(SaveUserRequest $request)
     {
         DB::transaction(function () use ($request) {
             $user = User::create([
