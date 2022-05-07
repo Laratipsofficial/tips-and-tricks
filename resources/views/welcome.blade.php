@@ -42,22 +42,22 @@
                     <div class="grid grid-cols-2 gap-8">
                         <div>
                             <x-label>Name</x-label>
-                            <x-input name="name" required />
+                            <x-input name="name" />
                         </div>
 
                         <div>
                             <x-label>Email</x-label>
-                            <x-input type="email" name="email" required />
+                            <x-input type="email" name="email" />
                         </div>
 
                         <div>
                             <x-label>Password</x-label>
-                            <x-input type="password" name="password" required />
+                            <x-input type="password" name="password" />
                         </div>
 
                         <div>
                             <x-label>Select Role</x-label>
-                            <x-select :items="$roles" name="role_id" required />
+                            <x-select :items="$roles" name="role_id" />
                         </div>
 
                         <div>
