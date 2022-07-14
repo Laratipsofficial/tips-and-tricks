@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Login;
+use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)
+            ->has(
+                Post::factory()
+                    ->hasComments(3)
+                    ->count(3),
+                'posts'
+            )
             ->create()
             ->each(
                 fn (User $user) => Login::factory()

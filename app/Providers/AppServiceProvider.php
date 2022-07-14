@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
             'video' => Video::class,
         ]);
 
-        Model::preventLazyLoading(! $this->app->isProduction());
+        Model::preventLazyLoading(!$this->app->isProduction());
 
         // Blade::anonymousComponentNamespace(
         //     'admin/components',
