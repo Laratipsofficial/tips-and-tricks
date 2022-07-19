@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a42d90daee1764b51a4e85827bdd6e8",
+    "content-hash": "b6fc400239581aabededb66e15a5ca6a",
     "packages": [
         {
             "name": "asdh/password-changed-notification",
@@ -2527,7 +2527,7 @@
         },
         {
             "name": "nunomaduro/termwind",
-            "version": "dev-master",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/termwind.git",
@@ -2556,7 +2556,6 @@
                 "symfony/var-dumper": "^5.2.7|^6.0.0",
                 "thecodingmachine/phpstan-strict-rules": "^1.0.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -9208,9 +9207,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "nunomaduro/termwind": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
