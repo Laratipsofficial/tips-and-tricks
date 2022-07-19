@@ -39,6 +39,8 @@
                 <form action="{{ route('save-user') }}" method="POST" x-data="{btnDisabled: false}" x-on:submit="btnDisabled=true">
                     @csrf
 
+                    {{-- <input type="hidden" name="type" value="admin"> --}}
+
                     <div class="grid grid-cols-2 gap-8">
                         <div>
                             <x-label>Name</x-label>
