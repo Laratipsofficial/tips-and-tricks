@@ -14,7 +14,6 @@ use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -57,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
             'video' => Video::class,
         ]);
 
-        Model::preventLazyLoading(!$this->app->isProduction());
+        Model::preventLazyLoading(! $this->app->isProduction());
 
         // Blade::anonymousComponentNamespace(
         //     'admin/components',

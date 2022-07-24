@@ -10,5 +10,5 @@ class FakeStoreApi extends Api
     public function initialize(): PendingRequest
     {
         return Http::acceptJson()->baseUrl('https://fakestoreapi.com');
-    }    
+    }
 }

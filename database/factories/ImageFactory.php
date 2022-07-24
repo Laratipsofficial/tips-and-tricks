@@ -24,8 +24,8 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            'name' => Str::random(50) . '.jpg',
-            'size' => random_int(10000, 1000000)
+            'name' => Str::random(50).'.jpg',
+            'size' => random_int(10000, 1000000),
         ];
     }
 

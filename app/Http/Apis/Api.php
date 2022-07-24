@@ -21,5 +21,5 @@ abstract class Api
         return $this->forwardCallTo($this->http, $method, $params);
     }
 
-    public abstract function initialize(): PendingRequest;
+    abstract public function initialize(): PendingRequest;
 }

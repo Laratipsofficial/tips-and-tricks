@@ -8,16 +8,16 @@ class InvoiceController extends Controller
 {
     public function generate(Request $request)
     {
-        return "invoice generate";
+        return 'invoice generate';
     }
 
     public function download(Request $request)
     {
-        return "invoice download";
+        return 'invoice download';
     }
 
     public function send(Request $request)
     {
-        return "invoice send";
+        return 'invoice send';
     }
 }

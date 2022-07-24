@@ -3,8 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
-use function Termwind\ask;
 use function Termwind\render;
 
 class MilesToKilometers extends Command

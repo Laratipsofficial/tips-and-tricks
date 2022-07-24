@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\Jobs\TestingJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Log;
@@ -43,7 +42,7 @@ class Kernel extends ConsoleKernel
         $this->load(__DIR__.'/Commands');
 
         $dirs = [
-            __DIR__.'/../Actions'
+            __DIR__.'/../Actions',
         ];
 
         foreach ($dirs as $dir) {
