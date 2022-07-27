@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserTypeEnum;
 use App\Mail\NewPasswordChangedNotificationMail;
 use Asdh\PasswordChangedNotification\Contracts\PasswordChangedNotificationContract;
 use Asdh\PasswordChangedNotification\Traits\PasswordChangedNotificationTrait;
@@ -23,6 +24,7 @@ class User extends Authenticatable implements PasswordChangedNotificationContrac
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'type' => UserTypeEnum::class,
     ];
 
     public function articles()

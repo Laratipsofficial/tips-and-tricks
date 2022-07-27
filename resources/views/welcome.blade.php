@@ -36,7 +36,7 @@
                     <x-alert :message="session('success')" />
                     @endif
 
-                <form action="{{ route('save-user') }}" method="POST" x-data="{btnDisabled: false}" x-on:submit="btnDisabled=true">
+                <form action="{{ route('save-user') }}" method="POST" x-data="{btnDisabled: false}" x-on:submit="btnDisabled=true" enctype="multipart/form-data">
                     @csrf
 
                     {{-- <input type="hidden" name="type" value="admin"> --}}
@@ -63,6 +63,14 @@
                         </div>
 
                         <div>
+                            <x-label>Image</x-label>
+                            <x-input name="image" type="file" />
+                            @error('image')
+                                <small class="text-red-500">{{ $message }}</small>
+                            @enderror
+                        </div>
+
+                        <div class="col-span-2">
                             <x-button ::disabled="btnDisabled">Save</x-button>
                         </div>
                     </div>
