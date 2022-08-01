@@ -16,6 +16,7 @@ class CreateRoleUserTable extends Migration
         Schema::create('role_user', function (Blueprint $table) {
             $table->foreignId('role_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->dateTime('expires_at')->nullable();
 
             $table->primary(['role_id', 'user_id']);
         });
