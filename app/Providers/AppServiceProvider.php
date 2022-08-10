@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -62,5 +63,17 @@ class AppServiceProvider extends ServiceProvider
         //     'admin/components',
         //     'admin'
         // );
+
+        Builder::macro('toRawSql', function () {
+            dd(
+                vsprintf(
+                    str_replace(['?'], ['%s'], $this->toSql()),
+                    array_map(
+                        fn ($item) => is_numeric($item) ? $item : "'{$item}'",
+                        $this->getBindings()
+                    )
+                )
+            );
+        });
     }
 }
