@@ -10,6 +10,7 @@
         "doctrine/dbal": "^3.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "honeybadger-io/honeybadger-laravel": "^3.14",
         "laravel/framework": "^9.0",
         "laravel/horizon": "^5.8",
         "laravel/pint": "^1.0",
