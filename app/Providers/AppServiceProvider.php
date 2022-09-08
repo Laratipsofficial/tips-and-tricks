@@ -14,6 +14,7 @@ use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -40,6 +41,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Model::unguard();
+
+        App::macro('isStaging', function () {
+            return config('app.env') === 'staging';
+        });
 
         Blade::directive('route', function ($expression) {
             return "<?php echo route($expression); ?>";
