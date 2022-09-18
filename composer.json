@@ -16,6 +16,8 @@
         "laravel/pint": "^1.0",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.5",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "league/flysystem-path-prefixing": "^3.3",
         "nunomaduro/termwind": "^1.13",
         "predis/predis": "^1.1",
         "spatie/browsershot": "^3.52"
