@@ -17,6 +17,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -80,5 +81,7 @@ class AppServiceProvider extends ServiceProvider
                 )
             );
         });
+
+        // URL::setKeyResolver(fn () => 'your_key_here');
     }
 }
