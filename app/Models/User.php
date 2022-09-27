@@ -27,6 +27,10 @@ class User extends Authenticatable implements PasswordChangedNotificationContrac
         'type' => UserTypeEnum::class,
     ];
 
+    protected $attributes = [
+        'type' => UserTypeEnum::NORMAL,
+    ];
+
     public function articles()
     {
         return $this->hasMany(Article::class, 'user_id');
