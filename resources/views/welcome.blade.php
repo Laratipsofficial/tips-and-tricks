@@ -34,7 +34,7 @@
             <x-card>
                 @if(session('success'))
                     <x-alert :message="session('success')" />
-                    @endif
+                @endif
 
                 <form action="{{ route('save-user') }}" method="POST" x-data="{btnDisabled: false}" x-on:submit="btnDisabled=true" enctype="multipart/form-data">
                     @csrf
