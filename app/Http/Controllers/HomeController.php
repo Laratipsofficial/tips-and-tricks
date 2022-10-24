@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         return view('welcome', [
-            'user' => User::first(),
+            'users' => User::get(),
             'roles' => Role::get(['id', 'name']),
         ]);
     }

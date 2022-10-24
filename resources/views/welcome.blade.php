@@ -76,6 +76,16 @@
                     </div>
                 </form>
             </x-card>
+
+            <div class="my-16"></div>
+
+            <x-card>
+                @foreach ($users as $index => $user)
+                    @include('users')
+                @endforeach
+            </x-card>
+
+            <div class="my-16"></div>
         </div>
     </body>
 </html>

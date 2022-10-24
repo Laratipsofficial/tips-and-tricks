@@ -20,7 +20,7 @@ Route::prefix('invoice')
 
 Route::get('/', HomeController::class)->name('home');
 Route::post('save-user', SaveUserController::class)->name('save-user');
-Route::get('user/{type}', [UserController::class, 'type'])->name('user-type');
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 Route::get('tree', function () {
     return Category::tree();
