@@ -22,7 +22,7 @@ class SaveUserController extends Controller
                 'type' => 'normal',
             ]);
 
-            Mail::to($user)->send(new SendWelcomeMessageMail($user));
+            // Mail::to($user)->send(new SendWelcomeMessageMail($user));
 
             // throw new Exception("something went wrong.");
             $user->roles()->attach($request->role_id);
