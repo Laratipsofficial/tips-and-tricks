@@ -19,18 +19,33 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)
-            ->has(
-                Post::factory()
-                    ->hasComments(3)
-                    ->count(3),
-                'posts'
-            )
+            // ->has(
+            //     Post::factory()
+            //         ->hasComments(3)
+            //         ->count(3),
+            //     'posts'
+            // )
             ->create()
             ->each(
                 fn (User $user) => Login::factory()
-                    ->times(random_int(2, 4))
+                    ->times(random_int(1, 9))
                     ->create(['user_id' => $user->id])
             );
+
+        // User::factory()
+        //     ->hasPosts(9000, [
+        //         'published_at' => '2022-07-01',
+        //     ])
+        //     ->hasPosts(8000, [
+        //         'published_at' => '2022-08-01',
+        //     ])
+        //     ->hasPosts(10000, [
+        //         'published_at' => '2022-09-01',
+        //     ])
+        //     ->hasPosts(10200, [
+        //         'published_at' => '2022-10-01',
+        //     ])
+        //     ->create();
 
         Role::factory()
             ->times(3)
