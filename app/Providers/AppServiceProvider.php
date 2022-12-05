@@ -41,8 +41,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Model::unguard();
-
         App::macro('isStaging', function () {
             return config('app.env') === 'staging';
         });
@@ -51,9 +49,21 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo route($expression); ?>";
         });
 
+        // Relation::morphMap([
+        //     'article' => Article::class,
+        //     // 'category' => Category::class,
+        //     'comment' => Comment::class,
+        //     'image' => Image::class,
+        //     'post' => Post::class,
+        //     'role' => Role::class,
+        //     'shop' => Shop::class,
+        //     'user' => User::class,
+        //     'video' => Video::class,
+        // ]);
+
         Relation::enforceMorphMap([
             'article' => Article::class,
-            'category' => Category::class,
+            // 'category' => Category::class,
             'comment' => Comment::class,
             'image' => Image::class,
             'post' => Post::class,
@@ -62,8 +72,6 @@ class AppServiceProvider extends ServiceProvider
             'user' => User::class,
             'video' => Video::class,
         ]);
-
-        Model::preventLazyLoading(! $this->app->isProduction());
 
         // Blade::anonymousComponentNamespace(
         //     'admin/components',
@@ -83,5 +91,19 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // URL::setKeyResolver(fn () => 'your_key_here');
+
+        // Model::preventLazyLoading();
+        // Model::preventLazyLoading(! $this->app->isProduction());
+
+        // Model::preventAccessingMissingAttributes();
+        // Model::preventAccessingMissingAttributes(! $this->app->isProduction());
+
+        Model::unguard();
+        // Model::preventSilentlyDiscardingAttributes();
+        // Model::preventSilentlyDiscardingAttributes(! $this->app->isProduction());
+
+        Blade::if('local', function () {
+            return app()->environment('local');
+        });
     }
 }

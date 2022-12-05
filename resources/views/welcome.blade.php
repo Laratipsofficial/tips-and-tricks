@@ -49,12 +49,13 @@
                   enctype="multipart/form-data">
                 @csrf
 
-                {{-- <input type="hidden" name="type" value="admin"> --}}
-
                 <div class="grid grid-cols-2 gap-8">
                     <div>
                         <x-label>Name</x-label>
-                        <x-input name="name" />
+                        <x-input name="name" :value="old('name')" />
+                        @error('name')
+                            <small class="text-red-500">{{ $message }}</small>
+                        @enderror
                     </div>
 
                     <div>
@@ -69,10 +70,20 @@
                                  name="password" />
                     </div>
 
-                    <div>
+                    {{-- <div>
                         <x-label>Select Role</x-label>
                         <x-select :items="$roles"
                                   name="role_id" />
+                    </div> --}}
+
+                    <div>
+                        <x-label>Type</x-label>
+                        <x-select :items="['admin', 'normal', 'editor']"
+                                  name="type"
+                                  :value="old('type')" />
+                        @error('type')
+                            <small class="text-red-500">{{ $message }}</small>
+                        @enderror
                     </div>
 
                     <div>
@@ -91,12 +102,47 @@
             </form>
         </x-card>
 
-        <div class="my-16"></div>
+        <x-card>
+            <form action="{{ route('home') }}"
+                  method="GET">
+                <div>
+                    <x-label>Name</x-label>
+                    <x-input name="name" :value="request('name')"></x-input>
+                </div>
+
+                <div class="mt-4">
+                    <x-button>Search</x-button>
+                    <x-button :href="route('home')">Reset</x-button>
+                </div>
+            </form>
+        </x-card>
+
+        {{-- <div class="my-16"></div> --}}
 
         <x-card>
-            @foreach ($logins as $index => $login)
-                @include('users')
+            <div>
+                <div class="grid grid-cols-5 gap-6 py-2 px-4 font-bold">
+                    <div class="col-span-2">Name</div>
+                    <div class="col-span-3">Email</div>
+                </div>
+            </div>
+            @foreach ($users as $index => $user)
+                <div>
+                    <div @class([
+                        'grid grid-cols-5 gap-6 py-2 px-4',
+                        'border-t' => $loop->first,
+                        'border-b' => $loop->last,
+                        'bg-gray-100' => $loop->odd,
+                    ])>
+                        <div class="col-span-2">{{ $user->name }}</div>
+                        <div class="col-span-3">{{ $user->email }}</div>
+                    </div>
+                </div>
             @endforeach
+
+            <div class="mt-4">
+                {{ $users->links() }}
+            </div>
         </x-card>
 
         <div class="my-16"></div>

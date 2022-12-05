@@ -30,6 +30,7 @@ class TestingJob implements ShouldQueue
      */
     public function handle()
     {
+        // throw new \Exception('error');
         Log::info('Testing Laravel Job.');
     }
 }

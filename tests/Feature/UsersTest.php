@@ -1,7 +1,7 @@
 <?php
 
-use function Pest\Laravel\get;
+use function Pest\Laravel\post;
 
-it('has a home page', function () {
-    get('/')->assertOk();
-});
+it('can save a user', function () {
+    // post('save-user')->assertSessionHasNoErrors();
+})->skip();

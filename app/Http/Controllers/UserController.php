@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\UserTypeEnum;
+use App\Http\Responses\UserCreateResponse;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index(Request $request)
     {
-        return view('users');
+        return User::get();
     }
 
-    public function type(UserTypeEnum $type)
+    public function create(Request $request)
     {
-        dd($type);
+        return new UserCreateResponse(new User);
+    }
+
+    public function edit(User $user, Request $request)
+    {
+        return new UserCreateResponse($user);
     }
 }

@@ -35,9 +35,25 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            if (app()->bound('honeybadger') && $this->shouldReport($e)) {
-                app('honeybadger')->notify($e, app('request'));
-            }
+            // if (app()->bound('honeybadger') && $this->shouldReport($e)) {
+            //     app('honeybadger')->notify($e, app('request'));
+            // }
         });
     }
+
+    // // \App\Exceptions\Handler.php
+    // protected function buildExceptionContext(Throwable $e)
+    // {
+    //     $user->roles()->saveManyQuietly($data);
+
+    //     return [
+    //         'exception' => [
+    //             'origin' => $e,
+    //             'context' => [
+    //                 'common' => $this->context(),
+    //                 'specific' => $this->exceptionContext($e),
+    //             ],
+    //         ],
+    //     ];
+    // }
 }

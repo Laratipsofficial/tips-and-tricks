@@ -13,4 +13,26 @@ class DashboardController extends Controller
 
         return view('dashboard.index', $data);
     }
+
+    public function profileForm(Request $request)
+    {
+        return view('dashboard.profile');
+    }
+
+    public function profile(Request $request)
+    {
+        // dump($request->all());
+        $data = $request->validate([
+            'name' => ['required'],
+        ]);
+        // dd($data);
+
+        $user = auth()->user();
+
+        User::create(
+            $request->all()
+        );
+
+        return back()->with('message', 'Profile updated.');
+    }
 }

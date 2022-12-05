@@ -8,5 +8,5 @@
         </div>
         <span class="ml-2">{{ $user->name }}</span>
     </div>
-    <div>{{ $user->latestLogin->logged_in_at }}</div>
+    <div>{{ $user->latestLogin?->logged_in_at }}</div>
 </div>

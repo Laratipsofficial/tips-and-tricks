@@ -14,18 +14,7 @@
             x-data="usersData({{ Js::from($users) }})"
             x-init="usersInit()"
         >
-            <div class="px-4">
-                <x-checkbox
-                    x-model="selectAll"
-                    id="selectAllUsers"
-                    x-ref="selectAllUsers"
-                    label="Select All"
-                />
-            </div>
-
-            @foreach ($users as $user)
-                @include('dashboard.user')
-            @endforeach
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, quos optio laboriosam quibusdam accusantium dignissimos architecto illum sapiente animi repudiandae cum error porro iure necessitatibus qui mollitia, recusandae perferendis quia!
         </div>
     </div>
 
